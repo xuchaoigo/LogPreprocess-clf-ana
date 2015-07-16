@@ -1,0 +1,38 @@
+//option optimize_for = LITE_RUNTIME;
+
+message InnerHeader {
+    required uint32 cmd = 1;
+    required uint32 subcmd = 2;
+    required uint32 seq = 3;
+    required uint32 protoversion = 4;
+    optional uint32 src_addr = 5[default=0];
+    optional uint32 src_port = 6[default=0];
+    optional uint32 socket = 7[default=0];
+    repeated bytes context = 9;
+}
+
+message SampleTaskReq {
+    required uint32 file_cnt = 1;
+}
+
+message SampleTaskRep {
+    required uint32 result_cnt = 1;
+    repeated bytes md5 = 2;
+}
+
+message ResultInfo {
+    required bytes md5 = 1;
+    required uint32 level = 2;
+    optional bytes virus_name = 3;
+}
+
+message ResultTaskReq {
+    required uint32 reply_cnt = 1;
+    repeated ResultInfo result_info = 2;
+}
+
+message ResultTaskRep {
+    required uint32 result_cnt = 1;
+    repeated bytes md5 = 2;
+}
+

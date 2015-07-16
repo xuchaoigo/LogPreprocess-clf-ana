@@ -1,0 +1,1 @@
+link ../md5_get/common.py
